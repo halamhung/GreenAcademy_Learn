@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>To do list</h1>
+    <div class="contain">
+        <ul id="res">
+
+        </ul>
+    </div>
+</body>
+<script>
+    let students = [{ name: "hùng", age: 4 },
+    { name: "tèo", age: 7 },
+    { name: "minh", age: 7 },
+    { name: "vương", age: 9 }
+    ]
+    function loadStudents() {
+        for (let i = 0; i < students.length; i++) {
+            let li = document.createElement("li");
+            li.innerHTML = students[i].name, students[i].age;
+            res.appendChild(li);
+        }
+    }
+    loadStudents();
+    const obj1 = { name: "mèo", age: 9 };
+    const arr1 = [1, 2, 3];
+    const arr2 = [4, 5, 6];
+    const arr4 = [4, 5, 6];
+    const arr3 = [arr1, arr2, arr4]
+    const arr5 = [...arr1, ...arr2, { ...obj1 }]
+    console.log("đây là arr 5" + " " + arr5)
+    const arr6 = { ...students };
+    console.log(arr6)
+    let sum = 0;
+    arr2.map(item => sum += item);
+</script>
+
+</html>

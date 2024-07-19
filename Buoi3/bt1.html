@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .header {
+        background-image: url("imgs/bg_header.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 70vh;
+      }
+      .header .navbar {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        background-color: #cf372d;
+        width: 80%;
+        padding: 0 30px;
+      }
+      .header .navbar .logo {
+        width: 50%;
+      }
+      .header .navbar .logo img {
+        width: 200px;
+      }
+      .header .navbar .menu {
+        width: 50%;
+      }
+      .header .navbar .menu ul {
+        display: flex;
+        justify-content: space-around;
+        /* bỏ chấm của thẻ ul */
+        list-style: none;
+      }
+      .header .navbar .menu ul li a {
+        text-decoration: none;
+        color: white;
+        text-transform: uppercase;
+        position: relative;
+        margin-left: 10px;
+      }
+      .header .navbar .menu ul li a:before {
+        content: "";
+        width: 0;
+        height: 2px;
+        background-color: blue;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        transition: 100ms;
+      }
+      .header .navbar .menu ul li a:hover::before {
+        width: 100%;
+      }
+      .header .navbar .menu1 li {
+        position: relative;
+      }
+      .header .navbar .menu .menu2 {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        display: none;
+        white-space: nowrap;
+        padding-bottom: 10%;
+      }
+      .header .navbar .menu1 li:hover .menu2 {
+        background-color: black;
+        display: block;
+      }
+      .header .banner {
+        text-align: center;
+        line-height: 80px;
+        margin-top: 100px;
+      }
+      .header .banner h1 {
+        font-size: 80px;
+        color: #fff;
+      }
+      .header .banner p {
+        font-size: 20px;
+        color: #fff;
+        opacity: 0.5;
+      }
+      .header .banner button:hover {
+        transform: scale(1.2);
+      }
+      .header .banner button {
+        background-color: #cf372d;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        font-size: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="navbar">
+        <div class="logo">
+          <img src="imgs/logo.png" alt="Logo" />
+        </div>
+        <div class="menu">
+          <ul class="menu1">
+            <li>
+              <a href="#" id="Home">Home</a>
+              <ul class="menu2">
+                <li><a href="#" id="Home">Home</a></li>
+                <li><a href="#" id="About">About us</a></li>
+                <li><a href="#" id="Services">Services</a></li>
+                <li><a href="#" id="Projects">Projects</a></li>
+                <li><a href="#" id="Blog">Blog/News</a></li>
+                <li><a href="#" id="Shop">Shop</a></li>
+              </ul>
+            </li>
+            <li><a href="#" id="About">About us</a></li>
+            <li><a href="#" id="Services">Services</a></li>
+            <li><a href="#" id="Projects">Projects</a></li>
+            <li><a href="#" id="Blog">Blog/News</a></li>
+            <li><a href="#" id="Shop">Shop</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="banner">
+        <h1>Think Big. <span style="color: #cf372d">We do.</span></h1>
+        <p>Capitalise on low hanging fruit to identify a ballpark</p>
+        <button>OUR PORTFOLIO ></button>
+      </div>
+    </div>
+  </body>
+</html>

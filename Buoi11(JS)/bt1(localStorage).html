@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Tên người dùng là: <span id="player"></span></p>
+    <script>
+        let user = "Hùng";
+        let months = ["January", "February", "March", "April", "May", "June", "July"]
+        const random = Math.floor(Math.random() * months.length);
+        console.log(random, months[random]);
+        localStorage.setItem("username", user);
+        let info = localStorage.getItem("username");
+        player.innerHTML = info;
+
+    </script>
+</body>
+
+</html>

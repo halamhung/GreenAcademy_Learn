@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tài Xỉu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .xuc-xac {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            font-size: 24px;
+            /* Thêm CSS animation ở đây nếu muốn */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="so-du">Số dư: <span id="soDu">1000</span></div>
+        <div class="dat-cuoc">
+            <input type="number" id="soTienCuoc" value="100" min="10" max="1000">
+            <button onclick="datCuoc('Tài')">Tài</button>
+            <button onclick="datCuoc('Xỉu')">Xỉu</button>
+        </div>
+        <div class="ket-qua">
+            <div class="xuc-xac" id="xucXac1">1</div>
+            <div class="xuc-xac" id="xucXac2">1</div>
+            <div class="xuc-xac" id="xucXac3">1</div>
+        </div>
+        <div class="lich-su">Lịch sử kết quả:</div>
+        <button class="xoa">Xóa lịch sử
+        </button>
+    </div>
+    <script>
+        let soDu = parseInt(localStorage.getItem("soDu")) || 1000;
+        let lichSu = JSON.parse(localStorage.getItem("lichSu")) || [];
+        let xoa = localStorage.removeItem("lich-su")
+        document.getElementById("soDu").textContent = soDu;
+
+        function datCuoc(loaiCuoc) {
+            const soTienCuoc = parseInt(document.getElementById("soTienCuoc").value);
+
+            if (isNaN(soTienCuoc) || soTienCuoc < 10 || soTienCuoc > 1000) {
+                alert("Số tiền cược không hợp lệ!");
+                return;
+            }
+
+            if (soTienCuoc > soDu) {
+                alert("Không đủ tiền cược!");
+                return;
+            }
+
+            soDu -= soTienCuoc;
+            document.getElementById("soDu").textContent = soDu;
+            localStorage.setItem("soDu", soDu);
+
+            const xucXac1 = Math.floor(Math.random() * 6) + 1;
+            const xucXac2 = Math.floor(Math.random() * 6) + 1;
+            const xucXac3 = Math.floor(Math.random() * 6) + 1;
+
+            document.getElementById("xucXac1").textContent = xucXac1;
+            document.getElementById("xucXac2").textContent = xucXac2;
+            document.getElementById("xucXac3").textContent = xucXac3;
+
+            const tong = xucXac1 + xucXac2 + xucXac3;
+            let ketQua = tong > 10 ? "Tài" : "Xỉu";
+            if (ketQua === loaiCuoc) { // Nếu kết quả trùng với loại cược
+                soDu += soTienCuoc * 2; // Cộng thêm số tiền thắng (gấp đôi số tiền cược)
+                document.getElementById("soDu").textContent = soDu;
+                localStorage.setItem("soDu", soDu);
+            }
+            lichSu.push({ loaiCuoc, ketQua });
+            localStorage.setItem("lichSu", JSON.stringify(lichSu));
+
+            // Hiển thị lịch sử
+            const lichSuDiv = document.querySelector(".lich-su");
+            lichSuDiv.innerHTML = "Lịch sử kết quả:<br>";
+            lichSu.forEach(item => {
+                lichSuDiv.innerHTML += `${item.loaiCuoc}: ${item.ketQua}<br>`;
+            });
+            function xoa() {
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>

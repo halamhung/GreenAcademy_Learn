@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+
+        }
+
+        .bg {
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .cloud {
+            position: absolute;
+            bottom: 70%;
+            left: 10%;
+        }
+
+        .cloud2 {
+            position: absolute;
+            bottom: 65%;
+            left: 20%;
+        }
+
+        .cloud3 {
+            position: absolute;
+            bottom: 65%;
+
+        }
+
+        .contain #ic {
+            animation: cloud 8s linear infinite;
+        }
+
+        @keyframes cloud {
+            100% {
+                transform: translateX(1500px);
+            }
+        }
+
+        .sun {
+            width: 200px;
+            position: absolute;
+            bottom: 85%;
+            right: 90%;
+            animation: sun 5s infinite alternate;
+        }
+
+        @keyframes sun {
+            100% {
+                transform: translateX(100px)
+            }
+        }
+
+        .boy {
+            width: 200px;
+            position: absolute;
+            bottom: 10%;
+            right: 90%;
+            animation: boy 5s infinite alternate-reverse;
+        }
+
+        @keyframes boy {
+            100% {
+                transform: translateX(1000px);
+            }
+        }
+
+        .lavang {
+            width: 200px;
+            position: absolute;
+            bottom: 30%;
+            right: 50%;
+
+        }
+
+        @keyframes lavang {
+            100% {
+                transform: translateX(1000px);
+            }
+        }
+
+        .lavang2 {
+            width: 200px;
+            position: absolute;
+            bottom: 30%;
+            right: 50%;
+
+        }
+
+        @keyframes lavang {
+            100% {
+                transform: translateX(1000px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <div>
+            <img src="bg.jpg" class="bg" alt="">
+        </div>
+        <div>
+            <img src="cloudmini.png" id="ic" class="cloud" alt="" width="400px">
+        </div>
+        <div>
+            <img src="cloudmini.png" id="ic" class="cloud2" alt="" width="400px">
+        </div>
+        <div>
+            <img src="cloudmini.png" id="ic" class="cloud3" alt="" width="400px">
+        </div>
+        <div>
+            <img src="sun.png" alt="" class="sun">
+        </div>
+        <div>
+            <img src="lavang.png" alt="" class="lavang">
+        </div>
+        <div>
+            <img src="lavang.png" alt="" class="lavang2">
+        </div>
+        <div>
+            <img src="—Pngtree—cartoon little boy flying a_4516999.png" alt="" class="boy">
+        </div>
+    </div>
+</body>
+
+</html>

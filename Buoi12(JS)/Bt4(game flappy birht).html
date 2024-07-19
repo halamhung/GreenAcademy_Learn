@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="900" height="500"></canvas>
+    <h1 id="res">Total:</h1>
+</body>
+<script>
+    let bg = new Image();
+    bg.src = "imgs/bg.png";
+
+    let bird = new Image();
+    bird.src = "imgs/bird.png";
+
+    let block1 = new Image();
+    block1.src = "imgs/chimney1.png";
+
+    let block2 = new Image();
+    block2.src = "imgs/chimney2.png";
+
+    let c = document.getElementById("canvas");
+    let ctx = c.getContext("2d");
+    let poin_bird = {
+        x: c.width / 5,
+        y: c.height / 2,
+    }
+    let arr = [];
+    arr[0] = {
+        x: c.width,
+        y: c.height - 190
+    }
+    let total = 0;
+    let speed = 2; //tốc độ game ban đầu
+    let speedIncreaseInterval = 5000; // tăng tốc dộ sau mỗi 5s;
+    function run() {
+        ctx.drawImage(bg, 0, 0, c.width, c.height);
+        ctx.drawImage(bird, poin_bird.x, poin_bird.y, 30, 30);
+        for (let i = 0; i < arr.length; i++) {
+            arr[i].x--;
+            poin_bird.y++;
+            ctx.drawImage(block1, arr[i].x, 0, 20, 190);
+            ctx.drawImage(block2, arr[i].x, arr[i].y, 20, 190);
+            if (arr[i].x == c.width / 2) {
+                arr = [...arr, { x: c.width, y: c.height - 190 }]
+            }
+            if (arr[i].x == poin_bird.x) {
+                total += 10;
+                res.innerHTML = "Total: " + total;
+            }
+            if (arr[i].x == -20) {
+                arr.slice(0, 1);
+            }
+            //dùng speed đã gán
+            for (let i = 0; i < arr.length; i++) {
+                arr[i].x -= speed;
+            }
+            if (poin_bird.y == 0 || poin_bird.y == c.height - 30) {
+                cancelAnimationFrame(tho);
+
+            }
+
+        }
+        let tho = requestAnimationFrame(run);
+
+    }
+
+    window.addEventListener("keydown", (e) => {
+        poin_bird.y -= 20;
+    })
+    run();
+    // let ngung = setInterval(run, 20)
+
+</script>
+
+</html>

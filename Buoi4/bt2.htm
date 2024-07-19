@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      footer {
+        background-image: url("imgs/bg_6.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      .footer-header {
+        color: #fff;
+        margin-bottom: 30px;
+      }
+      .footer-header h1 {
+        margin-bottom: 50px;
+      }
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+      .content {
+        padding: 50px 100px;
+        flex-wrap: wrap;
+        display: flex;
+      }
+      .logo-des {
+        line-height: 35px;
+      }
+      .Our-des,
+      .Get-des,
+      .Quick-des {
+        line-height: 35px;
+      }
+      .row {
+        padding: 20px;
+        width: 80%;
+        flex: calc(100% / 4);
+      }
+      .Our-des a {
+        display: block;
+        opacity: 0.4;
+      }
+      .Quick-des a {
+        display: block;
+        opacity: 0.4;
+      }
+      .Get-des p {
+        color: #fff;
+        opacity: 0.4;
+      }
+      .logo-des p {
+        color: #fff;
+        opacity: 0.5;
+      }
+      .logo-des a {
+        color: aqua;
+      }
+      .icon {
+        font-size: 20px;
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+      .Get-des i {
+        margin-right: 16px;
+      }
+      .footer-header {
+        position: relative;
+      }
+      .footer-header h1:before {
+        content: "";
+        width: 30px;
+        height: 3px;
+        background-color: aqua;
+        position: absolute;
+        top: 100%;
+      }
+      @media screen and (max-width: 1000px) {
+        .row {
+          flex: calc(100% / 2);
+        }
+      }
+      @media screen and (max-width: 430px) {
+        .footer-header img {
+          width: 100%;
+          flex-wrap: wrap;
+        }
+        .content {
+          padding: 20px 50px;
+        }
+        .content .row {
+          flex: calc(100% / 2);
+          justify-content: flex-start;
+        }
+      }
+      .Get-des p {
+        word-wrap: break-word;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <footer>
+      <div class="content">
+        <div class="logo row">
+          <div class="footer-header">
+            <img src="imgs/logo_3.png" alt="không ảnh" />
+          </div>
+          <div class="logo-des">
+            <p>
+              We give value to the execellence and top top class engineers, but
+              in terms of accurate service.
+            </p>
+            <a href="#">Read more >></a>
+          </div>
+          <div class="icon">
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="Our row">
+          <div class="footer-header">
+            <h1>Our Solutions</h1>
+          </div>
+          <div class="Our-des">
+            <a href="#">- Power And Enegy</a>
+            <a href="#">- Oli and Lubricant</a>
+            <a href="#">- Meterial Engineering</a>
+            <a href="#">- Mechanical Engineering</a>
+            <a href="#">- Chemical Research</a>
+            <a href="#">- Alternate Enegy</a>
+          </div>
+        </div>
+        <div class="Quick row">
+          <div class="footer-header">
+            <h1>Quick Links</h1>
+          </div>
+          <div class="Quick-des">
+            <a href="#">- About Us</a>
+            <a href="#">- News</a>
+            <a href="#">- Testimonials</a>
+            <a href="#">- Request A Quote</a>
+            <a href="#">- FAQ</a>
+          </div>
+        </div>
+        <div class="Get row">
+          <div class="footer-header">
+            <h1>Get in Touch</h1>
+          </div>
+          <div class="Get-des">
+            <p>
+              <span><i class="fa-solid fa-location-dot"></i></span>Lorance 542B,
+              Tailstoi Town 5248 MT, Wordwide Country
+            </p>
+
+            <p><i class="fa-solid fa-location-dot"></i>01865 524 8503</p>
+            <p><i class="fa-solid fa-location-dot"></i>info@Woodworkshop.Com</p>
+            <p><i class="fa-solid fa-location-dot"></i>Mon - Sat:9am to 6pm</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

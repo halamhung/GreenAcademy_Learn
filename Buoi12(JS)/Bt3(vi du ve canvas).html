@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        #myCanvas {
+            border: 1px solid black;
+            height: 500px;
+
+        }
+
+        #layer2 {
+            position: absolute;
+
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+    <canvas id="layer2"></canvas>
+</body>
+<script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.translate(50, -30); // Di chuyển điểm gốc sang (50, 30)
+    //hình vòng tròn thứ 1
+    ctx.beginPath();
+    ctx.arc(100, 100, 50, 0, 2 * Math.PI);
+    ctx.fillStyle = "yellow"
+    ctx.fill(); // tô màu
+    ctx.stroke();
+    //hình vuông thứ 2
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+    ctx.moveTo(100, 70);   // Đỉnh trên (giữ nguyên)
+    ctx.lineTo(125, 100);  // Đỉnh phải (dịch chuyển sang phải)
+    ctx.lineTo(100, 125);  // Đỉnh dưới (dịch chuyển xuống dưới)
+    ctx.lineTo(75, 100);   // Đỉnh trái (dịch chuyển sang trái)
+    ctx.closePath();       // Đóng đường dẫn
+    ctx.fill();
+    //hình tròn thứ 3
+    // //vẽ đường thẳng
+    // ctx.moveTo(23, 100);
+    // ctx.lineTo(50, 100);
+    // ctx.stroke();
+    ctx.fillStyle = "blue";
+    ctx.font = "15px Arial";
+    ctx.fillText("Đồng tiền xu", 55, 170);
+</script>
+
+</html>

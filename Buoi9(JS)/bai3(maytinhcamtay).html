@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+        }
+
+        .contain h1 {
+            font-size: 16px;
+        }
+
+        .contain {
+            border: 1px solid #3a3a3a;
+            padding: 20px 10px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 20px 20px 20px 20px #888888;
+            background-color: #ebe6d6;
+        }
+
+        .contain #res {
+            width: 285px;
+            height: 40px;
+            margin: 10px 0px;
+            text-align: right;
+            font-size: 20px;
+            padding: 5px;
+            border: 1px solid #3a3a3a;
+            border-radius: 5px;
+            background-color: #a1aa82;
+
+        }
+
+        table input {
+            width: 67px;
+            height: 67px;
+            border: 1px solid #3a3a3a;
+            border-radius: 5px;
+            background-color: #2f302b;
+            color: white;
+            margin: 3px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+        }
+
+        table input[value="="] {
+            height: 145px;
+
+        }
+
+        table input[value="C"] {
+            background-color: rgb(161, 48, 48);
+        }
+
+        table input[value="<"] {
+            background-color: rgb(161, 48, 48);
+
+        }
+
+        table input[value="0"] {
+            width: 145px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <h1>Electronic Cauculator</h1>
+        <input type="text" id="res">
+        <table>
+            <tr>
+                <td><input type="button" value="C" onclick="removeall()"></td>
+                <td><input type="button" value="<" onclick="removelastcharacter()"></td>
+                <td><input type="button" onclick="add('/')" value="/"></td>
+                <td><input type="button" onclick="add('*')" value="x"></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="add('7')" value="7"></td>
+                <td><input type="button" onclick="add('8')" value="8"></td>
+                <td><input type="button" onclick="add('9')" value="9"></td>
+                <td><input type="button" onclick="add('-')" value="-"></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="add('4')" value="4"></td>
+                <td><input type="button" onclick="add('5')" value="5"></td>
+                <td><input type="button" onclick="add('6')" value="6"></td>
+                <td><input type="button" onclick="add('+')" value="+"></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="add('1')" value="1"></td>
+                <td><input type="button" onclick="add('2')" value="2"></td>
+                <td><input type="button" onclick="add('3')" value="3"></td>
+                <td rowspan="2"><input type="button" onclick="calc()" value="="></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" onclick="add('0')" value="0"></td>
+                <td><input type="button" onclick="add('.')" value="."></td>
+
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        let res = document.getElementById("res")
+        function add(value) {
+            res.value += value;
+        }
+
+        function calc() {
+            res.value = eval(res.value);
+        }
+        function removeall() {
+            res.value = "";
+        }
+        function removelastcharacter() {
+            res.value = res.value.slice(0, -1);
+        }
+
+        let display = document.getElementById("display");
+        let currentInput = "";
+        let operator = "";
+
+        function appendNumber(number) {
+            currentInput += number;
+            display.value = currentInput;
+        }
+
+        function appendOperator(op) {
+            operator = op;
+            currentInput += operator;
+            display.value = currentInput;
+        }
+
+        function calculate() {
+            let result = eval(currentInput);
+            display.value = result;
+            currentInput = result.toString();
+        }
+
+        function clearDisplay() {
+            currentInput = "";
+            operator = "";
+            display.value = "";
+        }
+    </script>
+</body>
+
+</html>

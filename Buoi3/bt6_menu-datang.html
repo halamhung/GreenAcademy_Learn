@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+      }
+      li {
+        list-style: none;
+      }
+      .navba ul {
+        display: flex;
+        justify-content: space-around;
+      }
+      .navba ul li a {
+        margin-right: 10px;
+        color: #000;
+        text-transform: uppercase;
+      }
+      .navba ul li {
+        position: relative;
+      }
+      .navba ul li a::before {
+        content: "";
+        width: 0;
+        height: 2px;
+        background-color: aqua;
+        position: absolute;
+        top: 100%;
+        left: 0;
+      }
+      .navba ul li a:hover:before {
+        width: 100%;
+      }
+      .navba .menu1 li {
+        padding: 10px;
+        position: relative;
+      }
+      .navba .menu1 li:hover .menu2 {
+        display: block;
+      }
+      .navba .menu2 {
+        background-color: aqua;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        display: none;
+        white-space: nowrap;
+      }
+      .navba .menu3 {
+        background-color: aqua;
+        position: absolute;
+        top: 0%;
+        left: 100%;
+        display: none;
+        white-space: nowrap;
+      }
+      .navba .menu2 li:hover .menu3 {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navba">
+      <ul class="menu1">
+        <li>
+          <a href="#">Home</a>
+          <ul class="menu2">
+            <li>
+              <a href="#">Home</a>
+              <ul class="menu3">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Prices</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">About</a></li>
+            <li>
+              <a href="#">Prices</a>
+              <ul class="menu3">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Prices</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Product</a>
+          <ul class="menu2">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Prices</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">About</a>
+          <ul class="menu2">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Prices</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Prices</a>
+          <ul class="menu2">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Prices</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

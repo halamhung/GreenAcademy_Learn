@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .menu {
+            height: 200px;
+            padding: 10px;
+            background-color: aqua;
+        }
+
+        .menu .sidebar {
+            display: flex;
+        }
+
+        .menu .sidebar.active {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .menu .sidebar.active .left {
+            transform: translateX(0%);
+        }
+
+        .menu .sidebar.active .right {
+            transform: translateY(0%);
+        }
+
+        .menu .sidebar .left {
+            width: 30%;
+            height: 100vh;
+            background-color: #850c71;
+            transform: translateX(-120%);
+            transition: 1s;
+        }
+
+        .menu .sidebar .right {
+            width: 70%;
+            height: 100vh;
+            background-color: #3498db;
+            transform: translateY(-120%);
+            transition: 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <button onclick="handel_toggle()">Toggle</button>
+        <div class="sidebar">
+            <div class="left">
+                <button onclick="handel_toggle()">X</button>
+                left
+            </div>
+            <div class="right" onclick="handel_toggle()">right</div>
+        </div>
+    </div>
+    <div class="contain">
+        contain
+    </div>
+    <script>
+        let sidebar = document.querySelector('.sidebar');
+        function handel_toggle() {
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=i, initial-scale=1.0">
+    <title>Document</title>
+   <style> 
+   /* luôn luôn có bordex-box để khi đặt with 100% sẽ trừ margin của cha */
+    *{
+        box-sizing: border-box; 
+        margin: 0;
+        padding: 0;
+    }
+    a{
+        text-decoration: none;
+    }
+    body{
+        background-color: #c9ccd1;
+        text-align: center;
+    }
+    .contain{
+        width: 396px;
+        background-color: #fff;
+        margin: 100px auto;
+        padding: 15px;
+    }
+    .contain input[type='text'], .contain input[type='password'], .contain input[type='submit']{
+        width: 100%;
+        padding: 16px 14px;
+        font-size: 17px;
+        margin-bottom: 15px;
+        outline-color: blue;
+        border-radius: 5px;
+    }
+    #forget{
+        color: blue;
+        opacity: 0.9;
+        margin-bottom: 10px;
+        display: block;
+    }
+    button{
+        width: 50%;
+        padding: 17px;
+        background-color: green;
+        color: #fff;
+        border: none;
+        margin-top: 15px;
+        border-radius: 6px;
+    }
+   </style>
+</head>
+<body>
+    <div class="container">
+       <div class="contain">
+        <form>
+            <input type="text" placeholder="Nhập gmail hoặc số điện thoại"><br>
+            <input type="password" placeholder="Password"><br>
+            <input type="submit" value="Đăng nhập"><br>
+        </form>
+        <a href="#" id="forget">Quên mật khẩu</a>
+        <hr>
+        <button>Tạo tài khoản</button>
+       </div>
+       <p><a href="#">Tạo Trang</a> dành cho người nổi tiếng, thương hiệu hoặc doanh nghiệp</p>
+    </div>   
+</body>
+</html>

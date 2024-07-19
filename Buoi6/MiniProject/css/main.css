@@ -1,0 +1,55 @@
+.header_content {
+    max-width: 700px;
+    max-height: 400px;
+}
+.header-sub{
+    color: white;
+    opacity: 0.7;
+}
+.header_small_title span {
+    padding: 5px 20px !important;
+}
+.scroll_down {
+    bottom: 5vh;
+    width: 100%;
+    z-index: 8;
+}
+.section {
+    padding: 80px 0;
+}
+.main-title-border::after, .main-title-border::before {
+    display: inline-block;
+    margin-top: -7px;
+    vertical-align: middle;
+    content: "";
+    background-color: #d0d0d0;
+    width: 30px;
+    height: 1px;
+}
+.box-service{
+    border: 1px dotted;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+.box-service .ser_icon i {
+    height: 70px;
+    width: 70px;
+    padding-left: 36px;
+    transition: all 0.5s;
+}
+.text-features{
+    max-width: 420px;
+}
+.work_icon i{
+    height: 75px;
+    width: 75px;
+    line-height: 75px;
+}
+.working_icons_left i, .working_icons_right i {
+    top: 300px;
+    z-index: 9;
+}
+.working_icon_left i{
+    left: 63%;
+}

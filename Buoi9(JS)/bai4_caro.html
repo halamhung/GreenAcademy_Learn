@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .contain {
+        width: 300px;
+        height: 300px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .contain .box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid green;
+        font-size: 25px;
+        line-height: 100px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="contain">
+        <div class="box" data-id="0"></div>
+        <div class="box" data-id="1"></div>
+        <div class="box" data-id="2"></div>
+        <div class="box" data-id="3"></div>
+        <div class="box" data-id="4"></div>
+        <div class="box" data-id="5"></div>
+        <div class="box" data-id="6"></div>
+        <div class="box" data-id="7"></div>
+        <div class="box" data-id="8"></div>
+    </div>
+    <h1 id="res"></h1>
+</body>
+<script>
+    let boxes = document.querySelectorAll('.contain .box')
+    let flag = true;
+    let arr = ['', '', '', '', '', '', '', '', '']
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].addEventListener('click', handleplay)
+    }
+    function handleplay() {
+        if (flag == true) {
+            this.innerHTML = "X"
+            arr[this.getAttribute('data-id')] = 'X';
+            this.style.color = "red"
+            flag = false
+        }
+        else {
+            this.innerHTML = "O"
+            arr[this.getAttribute('data-id')] = 'O'
+            this.style.color = "blue"
+            flag = true
+        }
+        this.style.pointerEvents = "none"
+        //luw
+        console.log(arr);
+
+    }
+    function checkwin() {
+        if (arr[0] == arr[1] && arr[1] == arr[2] && arr[0] != '') {
+            alert(arr[0] + " win")
+        }
+        if (arr[3] == arr[4] && arr[4] == arr[5] && arr[3] != '') {
+            alert(arr[3] + " win")
+        }
+        if (arr[6] == arr[7] && arr[7] == arr[8] && arr[6] != '') {
+            alert(arr[6] + " win")
+        }
+        if (arr[0] == arr[3] && arr[3] == arr[6] && arr[0] != '') {
+            alert(arr[0] + " win")
+        }
+        if (arr[1] == arr[4] && arr[4] == arr[7] && arr[1] != '') {
+            alert(arr[1] + " win")
+        }
+        if (arr[2] == arr[5] && arr[5] == arr[8] && arr[2] != '') {
+            alert(arr[2] + " win")
+        }
+        if (arr[0] == arr[4] && arr[4] == arr[8] && arr[0] != '') {
+            alert(arr[0] + " win")
+        }
+        if (arr[2] == arr[4] && arr[4] == arr[6] && arr[2] != '') {
+            alert(arr[2] + " win")
+        }
+    }
+</script>
+
+</html>

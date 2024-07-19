@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+    </table>
+    <button onclick="addTable()">Thêm mới</button>
+    <button onclick="Del()">Xóa</button>
+
+</body>
+<script>
+    let dem = 0
+    function addTable() {
+        let table = document.getElementsByTagName("table")
+        let tr = document.createElement("tr")
+        let td1 = document.createElement("td")
+        let td2 = document.createElement("td")
+        let td3 = document.createElement("td")
+        td1.innerHTML = "Company" + dem++
+        td2.innerHTML = "Contact" + dem++
+        td3.innerHTML = "Country" + dem++
+        tr.appendChild(td1)
+        tr.appendChild(td2)
+        tr.appendChild(td3)
+        table[0].appendChild(tr)
+
+    }
+    function Del() {
+        let table = document.getElementsByTagName("table")[0]
+        let tr = table.getElementsByTagName("tr")
+        tr[tr.length - 1].remove()
+    }
+
+
+</script>
+
+</html>

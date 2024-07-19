@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+
+
+        .contain .row {
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .contain .table-content img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .contain .table-content p {
+            text-align: center;
+
+        }
+
+        .contain .table-content:hover {
+            filter: opacity(1);
+
+        }
+
+        .contain .table-content {
+            margin: 10px;
+            padding: 50px;
+            filter: opacity(0.5) grayscale(0.9);
+            transition: 1s;
+        }
+
+        .contain .table-content.active {
+            filter: none;
+        }
+
+        .contain .tab {
+            display: none;
+            width: 80%;
+            height: 200px;
+            margin: 10px;
+
+        }
+
+        .contain .tab p {
+            text-wrap: wrap;
+        }
+
+        .contain .tab img {
+            width: 200px;
+        }
+
+        .contain .tab.active {
+            display: block;
+            display: flex;
+            justify-content: center
+        }
+
+        .content {
+            width: 60%;
+            padding-left: 30px;
+
+        }
+
+        .main {
+            height: 200vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <div class="row">
+            <div class="table-content active" data-id="1">
+                <a href="#"> <img src=" imgs/tab-1.png" alt=""></a>
+                <p>Research</p>
+            </div>
+            <div class="table-content" data-id="2">
+                <a href="#"> <img src=" imgs/tab-2.png" alt=""></a>
+                <p>Planning</p>
+            </div>
+            <div class="table-content" data-id="3">
+                <a href="#"> <img src=" imgs/tab-3.png" alt=""></a>
+                <p>Production</p>
+            </div>
+            <div class="table-content" data-id="4">
+                <a href="#"> <img src=" imgs/tab-4.png" alt=""></a>
+                <p>Testing</p>
+            </div>
+            <div class="table-content" data-id="5">
+                <a href="#"> <img src=" imgs/tab-5.png" alt=""></a>
+                <p>Result</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="tab active" data-id="1">
+                <div>
+                    <img src="imgs/tab-1.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>Research</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum fugiat optio, odio accusamus
+                        minus
+                        adipisci dignissimos sunt veniam necessitatibus sit ducimus quis minima aliquam corrupti.
+                        Necessitatibus
+                        quam praesentium vero vitae?</p>
+                    <a href=" #">Details</a>
+                </div>
+            </div>
+            <div class="tab" data-id="2">
+                <div>
+                    <img src="imgs/tab-2.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>Research</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum fugiat optio, odio accusamus
+                        minus
+                        adipisci dignissimos sunt veniam necessitatibus sit ducimus quis minima aliquam corrupti.
+                        Necessitatibus
+                        quam praesentium vero vitae?</p>
+                    <a href=" #">Details</a>
+                </div>
+            </div>
+            <div class="tab" data-id="3">
+                <div>
+                    <img src="imgs/tab-3.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>Research</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum fugiat optio, odio accusamus
+                        minus
+                        adipisci dignissimos sunt veniam necessitatibus sit ducimus quis minima aliquam corrupti.
+                        Necessitatibus
+                        quam praesentium vero vitae?</p>
+                    <a href=" #">Details</a>
+                </div>
+            </div>
+            <div class="tab" data-id="4">
+                <div>
+                    <img src="imgs/tab-4.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>Research</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum fugiat optio, odio accusamus
+                        minus
+                        adipisci dignissimos sunt veniam necessitatibus sit ducimus quis minima aliquam corrupti.
+                        Necessitatibus
+                        quam praesentium vero vitae?</p>
+                    <a href=" #">Details</a>
+                </div>
+            </div>
+            <div class="tab" data-id="5">
+                <div>
+                    <img src="imgs/tab-5.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>Research</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum fugiat optio, odio accusamus
+                        minus
+                        adipisci dignissimos sunt veniam necessitatibus sit ducimus quis minima aliquam corrupti.
+                        Necessitatibus
+                        quam praesentium vero vitae?</p>
+                    <a href=" #">Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+        </div>
+        <button onclick="handle_scollToTop()">
+            Scoll to top
+        </button>
+        <script>
+            let tablecontent = document.querySelectorAll('.table-content');
+            let tab = document.querySelectorAll('.tab');
+            for (let i = 0; i < tablecontent.length; i++) {
+                tablecontent[i].addEventListener("mouseover", function () {
+                    handle_active(i);
+                })
+            }
+            function handle_active(index) {
+                for (let i = 0; i < tablecontent.length; i++) {
+                    tablecontent[i].classList.remove('active');
+                    tab[i].classList.remove('active');
+                }
+                tablecontent[index].classList.add('active');
+                tab[index].classList.add('active');
+
+            }
+            function handle_scollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                })
+            }
+
+
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="meo">
+            em là mèo
+        </div>
+        <div id="tho">Em là thỏ</div>
+        <h1>Em là h1 thứ 1</h1>
+        <h1>Em là h1 thứ 2</h1>
+        <input type="text" id="hoten">
+        <button onclick="thayDoi()">Thay đổi</button>
+        <button onclick="doiMau()">đổi màu</button>
+    </div>
+
+    <script>
+        let container = document.getElementsByClassName("container")
+        console.log(container[0])
+        let meo = document.getElementsByClassName("meo")
+        console.log(meo[0])
+        let tho = document.getElementById("tho")
+        console.log(tho)
+        let h1 = document.getElementsByTagName("h1")
+        console.log(h1)
+        console.log(h1[0])
+        console.log(h1[1])
+        function thayDoi() {
+            h1[0].innerHTML = "Đây là thẻ h1 đã thay đổi"
+            h1[1].innerHTML = "Đây là thẻ h1 thứ 2 đã thay đổi"
+            meo[0].innerHTML = "Đây là thẻ div đã thay đổi"
+            tho.innerHTML = "Đây là thẻ div thỏ đã thay đổi"
+            hoten.value = "Hùng"
+            meo[0].style.background = "green";
+            meo[0].style.fontSize = "40px";
+        }
+        function doiMau() {
+            container[0].style.background = "red";
+        }
+
+    </script>
+</body>
+
+</html>

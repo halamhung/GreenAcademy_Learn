@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      span {
+        position: relative;
+      }
+      span::before {
+        content: "";
+        width: 30%;
+        height: 2px;
+        background-color: blue;
+        position: absolute;
+        top: 100%;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <span>Home</span>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque fugiat
+      illo, ratione nobis eveniet eos nesciunt consequuntur numquam amet. Nisi
+      fuga deserunt quia ipsum, quos accusantium iusto eius reprehenderit velit.
+    </p>
+  </body>
+</html>

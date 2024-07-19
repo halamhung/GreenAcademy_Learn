@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            /* dùng để ẩn các phần dư ngoài chiều cao contain */
+            overflow: hidden;
+        }
+        .contain{
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .contain .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            flex: 25%; /*dung de xuong hang trat tu*/
+            /* width: 25%; */
+            transition: 1s;
+        }
+        .contain:hover .box{
+            background: linear-gradient(red, orange) ;
+            transform: rotate(100deg);
+           
+        }
+        .contain:hover .box:first-child{
+            background-color: blue;
+          
+        }
+        .contain:hover .box3{
+            background-color: yellowgreen;
+            transform: translate(10px,10px);
+        }
+        .contain:hover .box3 ~ .box4{
+            background-color: red;
+            transform: translateX(20px);
+        }
+        .contain:hover .box2{
+            transform: scale(1.5);
+        }
+        .contain:hover .box1{
+            transform: scaleX(1.5);
+        }
+        p:hover{
+           background-color: red; 
+           color: violet;
+        }
+        .square{
+            margin: 10px;
+            background-color: red;
+            width: 200px;
+            height: 200px;
+            /* nó sẽ dưa hình vuông theo trục x , y (x là trục ngang , y là dọc) */
+            transform: translate(10px,10px);
+            transform: translateX(20px);
+            transform: translateY(20px);
+            transform: scale(1.5);
+            transform: scaleX(1.5);
+        }
+
+    </style>
+</head>
+<body>
+    <p>funny</p>
+    <div class="square"></div>
+    <div class="contain">
+       
+        <H1>Mèo</H1>
+        <div class="box">0</div>
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+        <div class="box box4">4</div>
+        <div class="box box5">5</div>
+        <div class="box box6">6</div>
+        <H1>Mèo</H1>
+        <div class="box">0</div>
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+        <div class="box box4">4</div>
+        <div class="box box5">5</div>
+        <div class="box box6">6</div>
+        <H1>Mèo</H1>
+        <div class="box">0</div>
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+        <div class="box box4">4</div>
+        <div class="box box5">5</div>
+        <div class="box box6">6</div>
+    </div>
+  
+</body>
+</html>

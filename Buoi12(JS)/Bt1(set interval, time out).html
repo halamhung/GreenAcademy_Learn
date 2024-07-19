@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="setTimeout(test2, 1000)">set time out</button>
+    <button onclick="clearInterval(oke)">clear interval</button>
+    <h1 id="text1"></h1>
+    <div id="text2" style="width: 100px; height: 100px;"></div>
+    <div class="text3">
+        <div>
+            <p>Bây giờ là:
+                <span id="hour"></span>
+                <span id="minute"></span>
+                <span id="second"></span>
+            </p>
+
+        </div>
+
+    </div>
+    <div>
+        <h1>Đây là slider</h1>
+        <div class="slider">
+            <button onclick="handle_slider(false)">Pre</button>
+            <button onclick="handle_slider(true)">Next</button>
+            <img id="img_slider" src="https://i.imgflip.com/8xaez2.jpg" alt="" width="100px">
+        </div>
+    </div>
+</body>
+<script>
+    let index = 0;
+    let imgs = ["https://i.imgflip.com/8xaez2.jpg", "https://i.imgflip.com/8xaffi.jpg", "https://i.imgflip.com/8xafih.jpg"];
+    function handle_slider(flag) {
+        if (flag == true) {
+            index++;
+            if (index >= imgs.leng) {
+                index = 0;
+
+            }
+        }
+        else {
+            index--;
+            if (index < 0) {
+                index = imgs.length - 1
+            }
+        }
+        img_slider.src = imgs[index];
+    }
+
+    function test1() {
+        text1.innerHTML += "wellcome" + " "
+    }
+    function test2() {
+        text2.background = "aqua"
+        text2.innerHTML += "wellcome 2" + " "
+
+    }
+    let oke = setInterval(test1, 10000)
+
+    //time 
+    setInterval(showtime, 1000);
+    function showtime() {
+        let d = new Date();
+        let day = d.getDay();
+        let month = d.getMonth();
+        let year = d.getFullYear();
+        let h = d.getHours();
+        let m = d.getMinutes();
+        let s = d.getSeconds();
+        hour.innerHTML = " ngày " + day + "/" + month + "/" + year + " vào lúc " + h + " giờ " + m + " phút " + s + " giây";
+    }
+
+</script>
+
+</html>

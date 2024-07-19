@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .list {
+        height: 400px;
+        width: 400px;
+        background-color: red;
+      }
+      .product {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .product .box {
+        height: 100px;
+
+        flex: calc(100% / 6);
+        border: 1px solid green;
+        background-color: yellow;
+      }
+      @media screen and (max-width: 800px) {
+        .product .box {
+          flex: calc(100% / 4);
+          background-color: aqua;
+        }
+      }
+      @media screen and (max-width: 600px) {
+        .list {
+          width: 200px;
+          height: 200px;
+        }
+      }
+      @media screen and (max-width: 250px) {
+        .list {
+          width: 200px;
+          height: 200px;
+        }
+        .product .box {
+          flex: calc(100% / 2);
+          background-color: blueviolet;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="list">Danh sách menu</div>
+    <div class="product">
+      <div class="box">box</div>
+      <div class="box">box</div>
+      <div class="box">box</div>
+      <div class="box">box</div>
+      <div class="box">box</div>
+      <div class="box">box</div>
+    </div>
+  </body>
+</html>

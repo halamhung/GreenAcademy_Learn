@@ -1,0 +1,20 @@
+.custom-nav{
+    background-color: #232930;
+    padding: 15px 0;
+}
+.navbar-nav a{
+    color: #fff;
+    opacity: 0.5;
+}
+.home-bg-color {
+    background-color: #212529;
+    position: relative;
+}
+.home-half{
+    padding: 200px 0px;
+}
+.btn-primary{
+    background-color: #2ed078;
+    border: 2px solid #2ed078;
+}
+   

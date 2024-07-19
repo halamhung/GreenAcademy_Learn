@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Danh sách Sinh viên</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        #inputContainer {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        #studentList {
+            list-style: none;
+            padding: 0;
+        }
+
+        #studentList li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Danh sách Sinh viên</h1>
+
+    <div id="inputContainer">
+        <input type="text" id="studentName" placeholder="Tên sinh viên">
+        <input type="text" id="studentId" placeholder="Mã số sinh viên">
+        <button id="addBtn">Thêm sinh viên</button>
+    </div>
+
+    <ul id="studentList">
+    </ul>
+
+    <script src="script.js"></script>
+</body>
+<script>
+    let students = [];
+
+    const studentNameInput = document.getElementById("studentName");
+    const studentIdInput = document.getElementById("studentId");
+    const addBtn = document.getElementById("addBtn");
+    const studentList = document.getElementById("studentList");
+
+    // Event listeners for adding students
+
+    studentNameInput.addEventListener("keydown", handleKeyDown);
+    studentIdInput.addEventListener("keydown", handleKeyDown);
+    addBtn.addEventListener("click", addStudent);
+
+    function loadStudents() {
+        studentList.innerHTML = ""
+        students.map(students => {
+            const li = document.createElement("li");
+            li.textContent = `${students.name} (Mã số: ${students.mssv})`;
+            studentList.appendChild(li);
+        })
+    }
+    function handleKeyDown(event) {
+        if (event.key === "Enter") {
+            addStudent();
+        }
+    }
+    if (localStorage.getItem("students")) {
+        students = JSON.parse(localStorage.getItem("students"));
+    }
+
+
+    function addStudent() {
+        const name = studentNameInput.value.trim();
+        const mssv = studentIdInput.value.trim(); // Đảm bảo id là số nguyên
+
+        if (name && mssv) {
+            // Sử dụng reduce để tìm id lớn nhất
+            let idMax = students.reduce((maxId, student) => Math.max(maxId, student.id), 0);
+
+            const newStudent = { name, mssv, id: idMax + 1 }; // Tăng idMax lên 1 cho sinh viên mới
+            students.push(newStudent);
+
+            studentNameInput.value = "";
+            studentIdInput.value = "";
+            loadStudents(); // Cập nhật danh sách sau khi thêm
+            localStorage.setItem("students", JSON.stringify(students));
+        }
+    }
+    loadStudents();
+</script>
+
+</html>

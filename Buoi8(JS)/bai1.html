@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box"></div>
+    <button onclick="Add()">Thêm mới</button>
+    <button onclick="Del()">Xóa</button>
+
+</body>
+<script>
+    let dem = 0
+    let box = document.getElementsByClassName("box")
+    function Add() {
+        let p = document.createElement("p")
+        p.className = "the-p"
+        p.innerHTML = "Đây là 1 thẻ mới" + " " + dem++
+        box[0].innerHTML = ""
+        box[0].appendChild(p)
+    }
+    function Del() {
+        let p = document.getElementsByClassName("the-p")
+        p[0].remove()
+    }
+
+</script>
+
+</html>

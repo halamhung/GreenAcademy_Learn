@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contain {
+            display: flex;
+        }
+
+        .contain .box {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <div class="box">Box1</div>
+        <div class="box">Box2</div>
+        <div class="box">Box3</div>
+        <div class="box">Box4</div>
+        <div class="box">Box5</div>
+        <div class="box">Box6</div>
+    </div>
+    <!-- tôi muốn viết 1 box shadow nổi khối -->
+
+</body>
+<script>
+    let boxes1 = document.querySelector(".contain .box")
+    let boxes2 = document.querySelectorAll(".contain .box")
+    let box = document.querySelector(".contain")
+    box.style.boxShadow = "10px 10px 10px 10px #888888"
+    let colors = ['red', 'blue', 'green', 'yellow', 'orange', 'chartreuse']
+    console.log(boxes1)
+    console.log(boxes2)
+    for (let i = 0; i < boxes2.length; i++) {
+
+        boxes2[i].addEventListener("click", show)
+        boxes2[i].addEventListener("click", function (event) {
+            chonmau(i)
+        })
+    }
+    function show() {
+        this.style.backgroundColor = "red"
+        console.log(this)
+    }
+    function chonmau(index) {
+        document.body.style.backgroundColor = colors[index]
+        console.log(event.target.className)
+
+    }
+
+</script>
+
+</html>

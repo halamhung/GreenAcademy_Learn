@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <td>Chiều cao:</td>
+                <td><input type="text" id="chieucao"></td>
+            </tr>
+            <tr>
+                <td>Cân nặng:</td>
+                <td><input type="text" id="cannang"></td>
+            </tr>
+            <tr>
+                <td><button onclick="tinhBMI()">Tính BMI</button></td>
+                <td>
+                    <p id="ketqua"></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        // let chieucao = document.getElementById("chieucao")
+        // let cannang = document.getElementById("cannang")
+        // let ketqua = document.getElementById("ketqua")
+        // let h2 = document.createElement("h2")
+        // ketqua.appendChild(h2)
+        // function tinhBMI() {
+        //     let chieucao1 = parseFloat(chieucao.value)
+        //     let cannang1 = parseFloat(cannang.value)
+        //     let bmi = cannang1 / (chieucao1 * chieucao1)
+        //     ketqua.innerHTML = "BMI của bạn là: " + bmi.toFixed(2)
+        //     if (bmi < 18, 5) {
+        //         h2.innerHTML = "Bạn quá gầy cần nên ăn uống"
+        //     }
+        // }
+        // nếu tôi muốn thêm thẻ h2 thì như thế nào     
+        function tinhBMI() {
+            let chieucao = parseFloat(document.getElementById("chieucao").value);
+            let cannang = parseFloat(document.getElementById("cannang").value);
+            let bmi = cannang / (chieucao * chieucao);
+            let ketqua = document.getElementById("ketqua");
+            ketqua.innerHTML = "BMI của bạn là: " + bmi.toFixed(2);
+            if (bmi < 18.5) {
+                ketqua.innerHTML += "<br>Bạn quá gầy cần nên ăn uống";
+            } else if (bmi >= 18.5 && bmi < 25) {
+                ketqua.innerHTML += "<br>Bạn ở mức cân nặng bình thường";
+            } else if (bmi >= 25 && bmi < 30) {
+                ketqua.innerHTML += "<br>Bạn thừa cân";
+            } else {
+                ketqua.innerHTML += "<br>Bạn béo phì";
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

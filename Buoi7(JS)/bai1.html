@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let a = 5
+    let b = 6
+    let c = '2'
+    let d = 'hung'
+    console.log(a + b + c)
+    console.log(a + b + c * c)
+    console.log(a + b + c * c + d)
+    console.log(a + b + c * c * d)
+    let thang = 3
+    if (thang == 2) {
+
+        console.log("tháng" + thang + "có 29 ngày")
+
+
+    }
+    else {
+        console.log("tháng" + thang + "có 31 ngày")
+    }
+    //test
+    let str = 'Hà Lâm Hùng'
+    //kiểm tra bao nhiêu kí tự
+    console.log(str.length)
+    console.log(str.slice(3, 4)) //cắt 1 chữ
+    console.log(str.toUpperCase() + ' ' + 'viết hoa')
+    console.log(str.toLowerCase() + ' ' + 'viết thường')
+    console.log(str + ' ' + 'giữ nguyên')
+    let arr1 = str.split("")
+    console.log(arr1)
+    let arr2 = ["mèo", "thỏ", "Nai", "gà", "chó"]
+    console.log(arr2[0])
+    console.log(arr2) //mảng đầy đủ
+    console.log(arr2.pop()) //lấy đuôi 
+    console.log(arr2)
+    console.log(arr2.shift()) // lấy đầu 
+    console.log(arr2)
+    arr2.push("chim") //thêm vào cuối
+    console.log(arr2)
+    arr2.unshift("cá") //thêm vào đầu
+    console.log(arr2)
+
+    // 3 dấu bằng là gì 
+    let e = 5
+    let f = 5
+    if (e === f) {
+        console.log("e === f")
+    }
+    else {
+        console.log("e !== f")
+    }
+    let g = 5
+    let h = '5'
+    if (g === h) {
+        console.log("g === h")
+    }
+    else {
+        console.log("g !== h")
+    }
+    // 3 dấu bằng là so sánh kiểu dữ liệu và giá trị
+    // 2 dấu bằng là so sánh giá trị
+    // so sánh kiểu dữ liệu
+    console.log(typeof (e))
+    console.log(typeof (h))
+    // so sánh giá trị
+    console.log(e == h)
+    // so sánh kiểu dữ liệu và giá trị
+    console.log(e === h)
+    // so sánh kiểu dữ liệu
+    console.log(typeof (e) === typeof (h))
+
+    //câu 8: S7 = 1!+2!+3!+...+n!(Với n<10)
+    let n = 4
+    let sum = 0
+    for (let i = 1; i <= n; i++) {
+        let factorial = 1
+        for (let j = 1; j <= i; j++) {
+            factorial *= j
+        }
+        sum += factorial
+    }
+    console.log(sum);
+
+
+
+    function person(name1, age1) {
+        this.name = name1;
+        this.age = age1;
+    }
+    let person1 = new person("Hà lâm hùng", 23)
+    let person2 = new person("Lê văn tèo", 21)
+    console.log("Tên người thứ 1:" + " " + person1.name + " và " + "Tuổi:" + " " + person1.age)
+    console.log("Tên người thứ 2:" + " " + person2.name + "  và " + "Tuổi:" + " " + person2.age)
+    person1.name = "Nguyễn Văn A"
+    person1.age = 25
+    console.log("Tên người thứ 1 sau khi được sửa:" + " " + person1.name + " và " + "Tuổi:" + " " + person1.age)
+    console.log("Tên người thứ 2:" + " " + person2.name + "  và " + "Tuổi:" + " " + person2.age) 
+</script>
+
+</html>

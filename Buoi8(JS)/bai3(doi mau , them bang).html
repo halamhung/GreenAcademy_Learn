@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="contain">
+        <button onclick="CreateTable()">Thêm bảng</button>
+        <button onclick="changBackGround('#FFB200')">Đổi màu nền</button>
+        <button onclick="changBackGround('#EB5B00')">Đổi màu nền</button>
+        <button onclick="changBackGround('#B60071')">Đổi màu nền</button>
+        <button onclick="changBackGround('#E4003A')">Đổi màu nền</button>
+    </div>
+</body>
+<script>
+    let Arr = [{ name: "Hùng", age: 20 },
+    { name: 'Trí', age: 32 },
+    { name: 'tèo', age: 32 },
+    { name: 'Lê', age: 32 }
+    ]
+    let contain = document.getElementsByClassName("contain")
+    let tables = []
+
+    function CreateTable() {
+        var table = document.createElement("table")
+        table.border = 1
+        table.style.width = "30%"
+        table.style.margin = "auto"
+        table.style.borderCollapse = "collapse"
+        table.style.textAlign = "center"
+        table.style.padding = "10px"
+        table.style.margin = "10px"
+
+        //create tr1
+        let tr = document.createElement("tr")
+        //th1
+        let th = document.createElement("th")
+        th.innerHTML = "Name"
+        tr.appendChild(th)
+
+        //th2
+        th = document.createElement("th")
+        th.innerHTML = "Age"
+        tr.appendChild(th)
+        table.appendChild(tr)
+
+        let p = document.createElement("p")
+        p.innerHTML = "bảng thứ" + " " + (tables.length)
+        for (let item of Arr) {
+            contain[0].appendChild(p)
+            tr = document.createElement("tr")
+            tr.addEventListener("click", doimau)
+            td = document.createElement("td")
+            td.innerHTML = item.name
+            tr.appendChild(td)
+
+            td = document.createElement("td")
+            td.innerHTML = item.age
+            tr.appendChild(td)
+            table.appendChild(tr)
+        }
+        tables.push(table)
+        contain[0].appendChild(table)
+
+        if (tables.length > 3) {
+            contain[0].removeChild(tables[0])
+            tables.shift()
+        }
+
+    }
+
+    function updateTableNumbers() {
+        // Lặp qua từng bảng trong mảng tables
+        for (let i = 0; i < tables.length; i++) {
+            // Tìm phần tử <p> chứa thông tin số thứ tự của bảng
+            let p = tables[i].previousElementSibling;
+            if (p && p.tagName === "P") {
+                p.innerHTML = "Bảng thứ " + (i + 1); // Cập nhật số thứ tự
+            }
+        }
+    }
+
+    function changBackGround(color) {
+        document.body.style.background = color
+    }
+    function doimau() {
+        contain[0].style.background = "aqua"
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>
