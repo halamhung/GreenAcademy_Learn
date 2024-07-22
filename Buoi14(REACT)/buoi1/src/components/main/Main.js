@@ -13,6 +13,7 @@ export function Main2(){
         <div>
             <h2>Đây là phần main2</h2>
         </div>
+        
         </>
     )
 }
