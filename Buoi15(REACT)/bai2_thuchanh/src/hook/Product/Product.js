@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Row } from 'reactstrap'
+import Product from './product/Product'
 
 export default function Product() {
     const [listpro,setListpro] = useState([
@@ -101,7 +103,20 @@ export default function Product() {
     ])
   return (
     <div>
-    
+        <Row>
+            {listpro.map((item,index) => (
+                <div key={index} className="col-md-3">
+                    <div className="card">
+                        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fproduct%2Bimages&psig=AOvVaw33eN-4-7467n_59Y_0362&ust=1701452852324000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCJ-X75_7-f8CFQAAAAAdAAAAABAD&uact=8&ved=2ahUKEwiD4b2756_AAxV_QmMBHbfyB0wQ9QF6BAgBEAE&usg=AOvVaw15_462834w_505_1089_1579_2048" className="card-img-top" alt="..." />
+                        <div className="card-body">
+                            <h5 className="card-title">{item.name}</h5>
+                            <p className="card-text">{item.addr}</p>
+                            <p className="card-text">Price: {item.price}</p>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </Row>
     </div>
   )
 }

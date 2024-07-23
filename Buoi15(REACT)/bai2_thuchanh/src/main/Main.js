@@ -16,7 +16,8 @@ import {
   CardText,
 } from "reactstrap";
 
-export default function Main() {
+export default function Main(props) {
+  const { pro } = props;
   const [activeButton, setActiveButton] = useState("New York"); // Nút đang hoạt động ban đầu
 
   const handleButtonClick = (cityName) => {
@@ -69,7 +70,8 @@ export default function Main() {
           {/* Cài đặt tab hoạt động dựa trên trạng thái */}
           <TabPane tabId="New York">
             <Row>
-              <Col md="4"></Col>
+              <h1>{pro.name}</h1>
+              <h1>{pro.addr}</h1>
             </Row>
           </TabPane>
           {/* Thêm TabPanes cho các thành phố khác nếu cần thiết */}
