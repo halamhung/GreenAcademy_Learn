@@ -72,7 +72,7 @@ export default function API() {
                 message && <p>{message}</p>
             }
             <h1>List student</h1>
-            <Input type='text' value={text} />
+            <Input type='text' value={text} onChange={(e)=> setText} />
             <Table>
                 <thead>
                     <tr>
