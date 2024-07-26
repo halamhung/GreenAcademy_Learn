@@ -1,0 +1,21 @@
+.wheel {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+  
+  }
+  
+  .wheel-item {
+    position: absolute;
+    transform-origin: 50% 100%; /* Điểm xoay ở cạnh dưới */
+    width: 50%; /* Chiều rộng mỗi phần bằng 1/2 đường kính */
+    text-align: center;
+  }
+  
+  .wheel.spinning {
+    /* Thêm transition ở đây để tạo hiệu ứng quay */
+  }
