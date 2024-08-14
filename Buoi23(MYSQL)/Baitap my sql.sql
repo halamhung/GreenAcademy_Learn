@@ -320,7 +320,10 @@ LIMIT 1;
 -- 43. *Mỗi nước sản xuất, tìm sản phẩm (MASP,TENSP) có giá bán cao nhất.
 	select masp, tensp, nuocsx
     from sanpham
-    where 	(nuocsx,gia) in (select nuocsx,max(gia) from sanpham group by nuocsx)
+    where 	(nuocsx,gia) in (select nuocsx,max(gia) from sanpham group by nuocsx);
 -- 44. Tìm nước sản xuất sản xuất ít nhất 3 sản phẩm có giá bán khác nhau.
-
+	select nuocsx, count(distinct gia) 
+    from sanpham
+    group by nuocsx
+    having count(distinct gia) >=3
 -- 45. *Trong 10 khách hàng có doanh số cao nhất, tìm khách hàng có số lần mua hàng nhiều nhất.
