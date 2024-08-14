@@ -195,11 +195,22 @@ insert into CTHD values (1023,'ST04',6);
 -- 6. Làm thế nào để thuộc tính LOAIKH trong quan hệ KHACHHANG có thể lưu các giá trị là: “Vang
 -- lai”, “Thuong xuyen”, “Vip”, ...
 	alter table KHACHHANG modify column LOAIKH varchar(20);
-	update KHACHHANG
-    set LOAIKH = 'Vang lai'
-	where MAKH = 'KH101'
+		-- kh10
+		update KHACHHANG
+		set LOAIKH = 'Vang lai'
+		where MAKH = 'KH10';
+        -- kh05
+        use shop;
+        update KHACHHANG
+        set LOAIKH = 'VIP'
+        where MAKH = 'KH05';
+        
 -- 7. Đơn vị tính của sản phẩm chỉ có thể là (“cay”,”hop”,”cai”,”quyen”,”chuc”)
+		update SANPHAM
+        set DVT = 'cay'
+        WHERE MASP = 'BB01'
 -- 8. Giá bán của sản phẩm từ 500 đồng trở lên.
+		+
 -- 9. Mỗi lần mua hàng, khách hàng phải mua ít nhất 1 sản phẩm.
 -- 10. Ngày khách hàng đăng ký là khách hàng thành viên phải lớn hơn ngày sinh của người đó.
 -- 11. Ngày mua hàng (NGHD) của một khách hàng thành viên sẽ lớn hơn hoặc bằng ngày khách hàng đó
@@ -245,7 +256,8 @@ insert into CTHD values (1023,'ST04',6);
 -- 16. In ra danh sách các sản phẩm (MASP,TENSP) không bán được trong năm 2006.
 -- 17. In ra danh sách các sản phẩm (MASP,TENSP) do “Trung Quoc” sản xuất không bán được trong
 -- năm 2006.
--- 18. Tìm số hóa đơn đã mua tất cả các sản phẩm do Singapore sản xuất.
+-- 18. Tìm số hóa đơn đã mua tất cả các sản phẩm do Singapore sản xuất
+	select * from HOADON where nuocsx = 'Singapore'
 -- 19. Tìm số hóa đơn trong năm 2006 đã mua ít nhất tất cả các sản phẩm do Singapore sản xuất.
 -- 20. Có bao nhiêu hóa đơn không phải của khách hàng đăng ký thành viên mua?
 -- 21. Có bao nhiêu sản phẩm khác nhau được bán ra trong năm 2006.
@@ -260,10 +272,25 @@ insert into CTHD values (1023,'ST04',6);
 -- giá cao nhất (của tất cả các sản phẩm).
 -- 30. In ra danh sách các sản phẩm (MASP, TENSP) do “Trung Quoc” sản xuất có giá bằng 1 trong 3 mức
 -- giá cao nhất (của sản phẩm do “Trung Quoc” sản xuất).
+	select  masp,tensp
+    from SANPHAM sp join (select distinct gia from sanpham order by gia desc limit 3) tmp
+    where sp.gia =tmp.gia and nuocsx= 'trung quoc'
+  
 -- 31. * In ra danh sách 3 khách hàng có doanh số cao nhất (sắp xếp theo kiểu xếp hạng).
+	select makh,hoten
+    from khachhang
+    order by doanhso desc limit 3
 -- 32. Tính tổng số sản phẩm do “Trung Quoc” sản xuất.
+	select count(masp)
+    from sanpham
+	where nuocsx = 'Trung Quoc'hoadon
+
 -- 33. Tính tổng số sản phẩm của từng nước sản xuất.
+	select nuocsx , count(masp)
+    from sanpham
+    group by nuocsx
 -- 34. Với từng nước sản xuất, tìm giá bán cao nhất, thấp nhất, trung bình của các sản phẩm.
+	
 -- 35. Tính doanh thu bán hàng mỗi ngày.
 -- 36. Tính tổng số lượng của từng sản phẩm bán ra trong tháng 10/2006.
 -- 37. Tính doanh thu bán hàng của từng tháng trong năm 2006.
@@ -271,7 +298,29 @@ insert into CTHD values (1023,'ST04',6);
 -- 39. Tìm hóa đơn có mua 3 sản phẩm do “Viet Nam” sản xuất (3 sản phẩm khác nhau).
 -- 40. Tìm khách hàng (MAKH, HOTEN) có số lần mua hàng nhiều nhất.
 -- 41. Tháng mấy trong năm 2006, doanh số bán hàng cao nhất ?
+	SELECT MONTH(NGDK) AS Thang, SUM(DOANHSO) AS TongDoanhSo
+FROM KHACHHANG
+WHERE YEAR(NGDK) = 2006
+GROUP BY Thang
+ORDER BY TongDoanhSo DESC
+LIMIT 1;
 -- 42. Tìm sản phẩm (MASP, TENSP) có tổng số lượng bán ra thấp nhất trong năm 2006.
+     select masp 
+    from cthd ct , hoadon hd
+     where ct.sohd = hd.sohd
+     and year(nghd) = '2006'
+     group by masp
+     having sum(sl) <= all(select sum(sl)
+     from cthd ct , hoadon hd
+     where ct.sohd = hd.sohd
+     and year(nghd) = '2006'
+     group by masp
+     );
+     
 -- 43. *Mỗi nước sản xuất, tìm sản phẩm (MASP,TENSP) có giá bán cao nhất.
+	select masp, tensp, nuocsx
+    from sanpham
+    where 	(nuocsx,gia) in (select nuocsx,max(gia) from sanpham group by nuocsx)
 -- 44. Tìm nước sản xuất sản xuất ít nhất 3 sản phẩm có giá bán khác nhau.
+
 -- 45. *Trong 10 khách hàng có doanh số cao nhất, tìm khách hàng có số lần mua hàng nhiều nhất.
