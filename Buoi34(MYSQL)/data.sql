@@ -1,0 +1,66 @@
+CREATE DATABASE CONGTY;
+
+ALTER DATABASE CONGTY
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+use congty;
+
+CREATE TABLE NHANVIEN(
+HONV nvarchar(15),
+TENLOT nvarchar(15),
+TENNV nvarchar(15),
+MANV varchar(9) PRIMARY KEY,
+NGSINH date,
+DCHI nvarchar(30),
+PHAI nvarchar(3),
+LUONG decimal (15,2),
+MA_NQL varchar (9) ,
+PHG int
+);
+
+CREATE TABLE THANNHAN (
+MA_NVIEN varchar(9),
+TENTN nvarchar(15),
+PHAI nvarchar (3),
+NGSINH date,
+QUANHE nvarchar (15),
+PRIMARY KEY(MA_NVIEN, TENTN )
+);
+
+CREATE TABLE PHONGBAN(
+ TENPHG varchar(15),
+ MAPHG int PRIMARY KEY,
+ TRPHG varchar(9),
+ NG_NHANCHUC date
+);
+
+CREATE TABLE DIADIEM_PHG(
+MAPHG int,
+DIADIEM varchar(15),
+PRIMARY KEY(MAPHG , DIADIEM)
+);
+
+CREATE TABLE DEAN(
+TENDA varchar(15), 
+MADA int PRIMARY KEY,
+DDIEM_DA varchar(15),
+PHONG int
+);
+
+CREATE TABLE CONGVIEC (
+MADA int,
+STT int ,
+TEN_CONG_VIEC varchar(50),
+PRIMARY KEY (MADA, STT)
+);
+
+CREATE TABLE PHANCONG(
+MA_NVIEN varchar(9),
+MADA int, 
+STT int, 
+THOIGIAN decimal,
+PRIMARY KEY(MA_NVIEN, MADA, STT)
+);
+
+alter table 
