@@ -259,13 +259,38 @@ INSERT INTO PHONGBAN (TENPHG, MAPHG, TRPHG, NG_NHANCHUC) VALUES
 -- mức lương trung bình của phòng "Nghiên cứu"
 -- 43. Cho biết tên phòng ban và họ tên trưởng phòng của phòng ban có
 -- đông nhân viên nhất.
+	use congty;
+	select tenphg, concat(HONV,'',TENLOT,'',TENNV) as 'Họ Tên'
+	from phongban p, nhanvien n
+	where p.maphg = n.phg and trphg =manv
+    and maphg in (
+				select phg
+                from nhanvien
+                group by phg 
+                having count(*) >= all(select count(*) as 'dem' from nhanvien group by phg)
+    )
 -- 44. Cho biết danh sách các mã đề án mà nhân viên có mã là 009 chưa làm.
+	select mada
+    from dean
+    where mada not in (select mada from phancong where ma_nvien = "009")
 -- 45. Cho biết danh sách các công việc (tên công việc) trong đề án 'Sản
 -- phẩm X' mà nhân viên có mã là 009 chưa làm.
+	select ten_cong_viec
+    from congviec c
+    where mada in (select mada from dean where tenda="Sản phẩm X")
+    and stt not in (select stt from phancong where ma_nvien='009' and mada = c.mada  )
 -- 46. Tìm họ tên (HONV, TENLOT, TENNV) và địa chỉ (DCHI) của những
 -- nhân viên làm việc cho một đề án ở 'TP HCM' nhưng phòng ban mà họ
 -- trực thuộc lại không tọa lạc ở thành phố 'TP HCM' .
-
+	SELECT nv.HONV, nv.TENLOT, nv.TENNV, nv.DCHI
+FROM NHANVIEN nv
+JOIN PHANCONG pc ON nv.MANV = pc.MA_NVIEN
+JOIN DEAN da ON pc.MADA = da.MADA
+JOIN PHONGBAN pb ON nv.PHG = pb.MAPHG
+JOIN DIADIEM_PHG dd ON pb.MAPHG = dd.MAPHG
+WHERE da.DDIEM_DA = 'TP HCM'
+  AND dd.DIADIEM <> 'TP HCM'
+  AND nv.DCHI LIKE '%TP HCM%';
 -- 47. Tổng quát câu 16, tìm họ tên và địa chỉ của các nhân viên làm việc cho
 -- một đề án ở một thành phố nhưng phòng ban mà họ trực thuộc lại
 -- không toạ lạc ở thành phố đó.
