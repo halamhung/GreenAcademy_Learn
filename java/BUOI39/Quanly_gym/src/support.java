@@ -1,5 +1,3 @@
-package Support;
-
 import java.util.Scanner;
 
 public class support {
