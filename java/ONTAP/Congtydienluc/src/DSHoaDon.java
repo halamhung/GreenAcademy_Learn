@@ -42,6 +42,7 @@ public class DSHoaDon {
                 i--; // Giảm biến đếm để nhập lại thông tin hóa đơn này
             }
         }
+        scanner.close();
 
         System.out.println("\nDanh sách hóa đơn:");
         for (Hoadon hoaDon : danhSachHoaDon) {
