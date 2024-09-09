@@ -1,0 +1,16 @@
+I.Tìm hiểu dependency injection
+- Tight coupling
+Phương pháp code mà các thành phần phụ thuộc trực tiếp vào nhau
+=> Khó mở rộng
+
+- Loose coupling
+Phương pháp code mà các thành phần phụ thuộc vào interface hoặc các cơ chế ( constructor, setter,...)
+=>Dễ mở rộng bảo trì
+
+- Khái niệm DI
+Dependency Injection (DI) là một kỹ thuật quan trọng trong Spring Framework, bao gồm cả Spring Boot. DI giúp quản lý và cung cấp các phụ thuộc giữa các thành phần của ứng dụng, giúp làm giảm sự phụ thuộc chặt chẽ (tight coupling) và tăng tính mở rộng (scalability) và dễ bảo trì.
+ Các Kiểu Dependency Injection trong Spring Boot
++ Constructor Injection
++ Setter Injection
++ Field Injection
+Spring Boot cung cấp hỗ trợ DI thông qua các annotation như @Autowired, @Component, và @Bean, giúp quản lý các phụ thuộc và cấu hình ứng dụng một cách dễ dàng.
