@@ -1,30 +1,24 @@
-package com.example.swaggerui.models;
+package com.example.swaggerui.dtos;
 
-import jakarta.persistence.*;
+import com.example.swaggerui.models.XepLoai;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
-import lombok.*;
-import org.springframework.cglib.core.Local;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Builder
-@Data
-@Table(name = "student")
-public class Student extends BaseEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class StudentDTO {
     @NotBlank(message = "Tên không được trống")
     @Size(min = 2, max = 50, message = "Tên phải từ 2 đến 50 ký tự")
     private String ten;
@@ -38,5 +32,5 @@ public class Student extends BaseEntity{
 
     @NotNull(message = "Xếp loại không được trống")
     @Enumerated(EnumType.STRING)
-    private XepLoai  xepLoai;
+    private String xepLoai;
 }
