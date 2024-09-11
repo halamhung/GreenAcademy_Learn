@@ -4,6 +4,7 @@ import com.example.swaggerui.dtos.StudentDTO;
 import com.example.swaggerui.exceptions.ResourceNotFoundException;
 import com.example.swaggerui.models.Student;
 import com.example.swaggerui.responses.ApiResponse;
+import com.example.swaggerui.responses.StudentListResponse;
 import com.example.swaggerui.responses.StudentResonse;
 import com.example.swaggerui.services.StudentServices;
 
@@ -36,9 +37,13 @@ public class StudentController {
             );
     Page<StudentResonse> studentResonses = studentService.getStudents(pageable);
     int totalPages = studentResonses.getTotalPages();
-    List<StudentResonse>
+    List<StudentResonse> resonseList = studentResonses.getContent();
+        StudentListResponse studentListResponse = StudentListResponse.builder()
+                .studentResonseList(resonseList)
+                .totalPages(totalPages)
+                .build();
     ApiResponse apiResponse = ApiResponse.builder()
-            .data(studentPage.getContent())
+            .data(studentListResponse)
             .message("Lấy toàn bộ sinh viên thành công")
             .status(HttpStatus.OK.value())
             .build();

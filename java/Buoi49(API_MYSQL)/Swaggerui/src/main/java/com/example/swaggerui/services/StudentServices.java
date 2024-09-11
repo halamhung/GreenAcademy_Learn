@@ -4,6 +4,7 @@ import com.example.swaggerui.dtos.StudentDTO;
 import com.example.swaggerui.models.Student;
 import com.example.swaggerui.models.XepLoai;
 import com.example.swaggerui.repository.StudentRepository;
+import com.example.swaggerui.responses.StudentResonse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,9 +22,11 @@ public class StudentServices implements IStudentService{
         return studentRepository.findById(id).orElseThrow(()->new RuntimeException("Student không tìm thấy"));
     }
 
-    @Override
-    public Page<Student> getStudents(Pageable pageable) {
-        return studentRepository.findAll(pageable);
+    @Override //convert student thanh studentresonse
+    public Page<StudentResonse> getStudents(Pageable pageable) {
+        return studentRepository.findAll(pageable).map(student -> {
+            return StudentResonse.fromStudent(student);
+        });
     }
 
     @Override
