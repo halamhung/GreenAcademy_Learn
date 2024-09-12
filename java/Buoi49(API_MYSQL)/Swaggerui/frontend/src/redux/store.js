@@ -5,7 +5,7 @@ import studentSlice from './studentSlice';
 
 const store=configureStore({
     reducer:{
-        student:studentSlice
+        student:studentSlice,
     }
 })
 export default store
