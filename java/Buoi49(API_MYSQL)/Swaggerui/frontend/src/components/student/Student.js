@@ -2,7 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Alert, Button, Container, Input, Table } from 'reactstrap'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteStudent, editStudent, getAll, resetStatusAndMessage } from '../../redux/studentSlice';
+import {
+    deleteStudent,
+    editStudent,
+    getAll,
+    resetStatusAndMessage,
+    searchStudents,
+    searchStudentsByYear
+} from '../../redux/studentSlice';
 import ReactPaginate from 'react-paginate';
 
 
@@ -95,16 +102,70 @@ export default function Student() {
         const [year, month, day] = date.split('-');
         return `${day}-${month}-${year}`;
     };
+
+    //chức năng search
+    const [searchTerm, setSearchTem] = useState('');
+    const [searchApi, setSearchApi] = useState('');
+    const filteredStudents = (students || []).filter(student =>
+        student.ten.toLowerCase().includes(searchTerm.toLowerCase()));
+    const handle_search_api = ()=>{
+        dispatch(searchStudents(searchApi));
+    }
+    const [startYear, setStartYear] = useState(2000);
+    const [endYear, setEndYear] = useState(2001);
+    const handleSearchByYear = () => {
+        if(startYear&& endYear){
+            dispatch(searchStudentsByYear({ startYear, endYear}))
+        }
+    };
     return (
         <div className="products">
             <h1>isEdit: {studentEdit.isEdit}, id: {studentEdit.id}</h1>
             <Container>
+                <div className="my-3 d-flex">
+                    <Input
+                    type="number"
+                    value={startYear}
+                    onChange={(e)=> setStartYear(e.target.value)}
+                    className="mr-2"
+                    />
+                    <Input
+                    type="number"
+                    value={endYear}
+                    onChange={(e)=> setEndYear(e.target.value)}
+                    className="mr-2"
+                    />
+                    <Button onClick={handleSearchByYear}>Search</Button>
+                </div>
+
                 {showMessage && (
                     <Alert color={status === 200 ? "success" : "danger"}>
                         {message}
                     </Alert>
                 )}
+                {error && (
+                    <Alert color="danger">
+                        <ul>
+                            {error.map((error , index)=>
+                            <li key={index}>{error}</li>
+                            )}
+                        </ul>
+                    </Alert>
+                )}
+                <Input type='text' placeholder='Bạn cần tìm gì ?' className='my-3'
+                       value={searchTerm}
+                onChange={(e)=> setSearchTem(e.target.value)}
+                />
+                <Input type='text' placeholder='Search API' className='my-3'
+                value={searchApi}
+                       onChange={(e)=> setSearchApi(e.target.value)}
+                       onKeyDown={(e)=> {
+                           if(e.key === 'Enter'){
+                               handle_search_api();
+                           }
+                       }}
 
+                />
                 <Table hover>
                     <thead>
                         <tr>

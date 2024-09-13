@@ -20,4 +20,13 @@ public interface StudentRepository extends JpaRepository<Student,Long> {
     @Query("SELECT s FROM Student s WHERE s.thanhPho like LOWER(CONCAT('%',:name,'%')) OR s.ten like LOWER(CONCAT('%',:name,'%'))")
     List<Student> findByThanhPhoAndTen(String name);
 
+    @Query("SELECT s FROM Student s WHERE year(s.ngaySinh) BETWEEN :startYear AND :endYear")
+    List<Student> findByNgaySinhBetween(int startYear, int endYear);
+
+//    @Query("SELECT s FROM Student s WHERE"+
+//    "(:xeploai)"
+//            + " BETWEEN s.xepLoai AND (s.xepLoai + 0.1)"
+//            + " ORDER BY s.xepLoai DESC")
+//    List<Student> findByXepLoaiBetween(double xeploai);"
+//    )
 }
